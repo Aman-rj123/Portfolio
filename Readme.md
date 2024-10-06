@@ -23,6 +23,3 @@ This project is built using:
 - **Backend**: Node.js, Express (for serverless functions)
 - **Deployment**: Vercel
 - **Email Service**: Nodemailer
-
-## Installation
-To run this project locally, follow these steps:
