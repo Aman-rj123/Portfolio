@@ -10,6 +10,13 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
+
+app.get('/', (req, res) => {
+  res.send('Welcome to the Backend Service!');
+});
+
+
+
 // Nodemailer transporter setup using Gmail's SMTP credentials
 const transporter = nodemailer.createTransport({
   service: 'gmail', // Using Gmail service
