@@ -7,7 +7,7 @@ function HomePage() {
         <div className="min-h-screen bg-gradient-to-r from-black via-purple-900 to-pink-500 text-white">
 
             {/* Hero Section */}
-            <section className="flex flex-col items-center justify-center h-screen space-y-8">
+            <section className=" flex flex-col items-center justify-center h-screen space-y-8">
                 <div className="rounded-full overflow-hidden w-40 h-40 border-4 border-white shadow-lg">
                     <img src={"/Profile.JPG"} alt="Aman Raj" className="object-cover w-full h-full" />
                 </div>
