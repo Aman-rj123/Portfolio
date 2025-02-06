@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Certificate from './Certificate';
 
 const About = () => {
+    const [showCertificate, setShowCertificate] = useState(false);
+
     return (
         <div className="flex flex-col items-center p-8 max-w-3xl mx-auto">
             <div className="text-center mb-8">
@@ -32,7 +35,15 @@ const About = () => {
                         GitHub Profile
                     </button>
                 </a>
+                <button 
+                    onClick={() => setShowCertificate(!showCertificate)}
+                    className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition-colors duration-300"
+                >
+                    {showCertificate ? "Hide Certificate" : "View My Certificate"}
+                </button>
             </div>
+
+            {showCertificate && <Certificate />}
         </div>
     );
 }

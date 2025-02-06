@@ -5,7 +5,7 @@ import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 function Contact() {
-    const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+    const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '' });
 
     const handleChange = (e) => {
         setFormData({
@@ -32,39 +32,36 @@ function Contact() {
 
             if (contentType && contentType.includes('application/json')) {
                 const data = await response.json();
-                console.log('Response Data (JSON):', data);
                 toast.success(data.message || "Message sent successfully!");
             } else {
-                const text = await response.text(); // Handle plain text response
-                console.log('Response Text:', text);
+                const text = await response.text();
                 toast.success(text || "Message sent successfully!");
             }
         } catch (error) {
-            console.error('Error sending message:', error);
             toast.error("Failed to send message.");
         }
     };
 
     return (
-        <Container maxWidth="md" style={{ marginTop: '50px', backgroundColor: '#1a1a1a', padding: '20px', borderRadius: '8px' }}>
-            <Card elevation={3} style={{ backgroundColor: '#2c2c2c', padding: '20px', marginBottom: '40px', color: '#ff4d4d' }}>
+        <Container maxWidth="md" style={{ marginTop: '50px', padding: '20px', borderRadius: '8px', background: 'linear-gradient(135deg, #1f4037, #99f2c8)', color: '#ffffff' }}>
+            <Card elevation={3} style={{ backgroundColor: '#2d2d2d', padding: '20px', marginBottom: '40px', color: '#00e676', borderRadius: '8px' }}>
                 <CardContent>
-                    <Typography variant="h4" style={{ fontWeight: 'bold', marginBottom: '10px', color: '#ff4d4d' }}>
+                    <Typography variant="h4" style={{ fontWeight: 'bold', marginBottom: '10px', color: '#00e676' }}>
                         Contact Me
                     </Typography>
-                    <Typography variant="body1" style={{ marginBottom: '20px', color: '#ff4d4d' }}>
-                        I am currently looking for job opportunities in the software field. Feel free to reach out to me with any inquiries or opportunities!
+                    <Typography variant="body1" style={{ marginBottom: '20px', color: '#ffffff' }}>
+                        Feel free to reach out to me for any inquiries or opportunities. Let's connect!
                     </Typography>
                     <Grid container spacing={2}>
                         <Grid item xs={12} sm={6}>
-                            <Phone style={{ color: '#ff4d4d', marginRight: '10px' }} />
-                            <Typography variant="body1" style={{ display: 'inline-block', color: '#ff4d4d' }}>
+                            <Phone style={{ color: '#00e676', marginRight: '10px' }} />
+                            <Typography variant="body1" style={{ display: 'inline-block', color: '#ffffff' }}>
                                 Phone: +91-8252531775
                             </Typography>
                         </Grid>
                         <Grid item xs={12} sm={6}>
-                            <Email style={{ color: '#ff4d4d', marginRight: '10px' }} />
-                            <Typography variant="body1" style={{ display: 'inline-block', color: '#ff4d4d' }}>
+                            <Email style={{ color: '#00e676', marginRight: '10px' }} />
+                            <Typography variant="body1" style={{ display: 'inline-block', color: '#ffffff' }}>
                                 Email: amanraj840984@gmail.com
                             </Typography>
                         </Grid>
@@ -72,47 +69,66 @@ function Contact() {
                 </CardContent>
             </Card>
 
-            <Card elevation={3} style={{ padding: '30px', backgroundColor: '#2c2c2c', color: '#ff4d4d' }}>
-                <Typography variant="h5" style={{ fontWeight: 'bold', marginBottom: '20px', color: '#ff4d4d' }}>
-                    Send a Message
+            <Card elevation={3} style={{ padding: '30px', backgroundColor: '#333333', borderRadius: '8px' }}>
+                <Typography variant="h5" style={{ fontWeight: 'bold', marginBottom: '20px', color: '#00e676' }}>
+                    Get in Touch
                 </Typography>
                 <form onSubmit={handleSubmit}>
-                    <Grid container spacing={2}>
-                        <Grid item xs={12}>
+                    <Grid container spacing={3}>
+                        <Grid item xs={12} sm={6}>
                             <TextField
                                 name="name"
-                                label="Your Name"
+                                label="Name"
                                 fullWidth
                                 required
                                 variant="outlined"
                                 value={formData.name}
                                 onChange={handleChange}
-                                InputLabelProps={{ style: { color: '#ff4d4d' } }}
+                                InputLabelProps={{ style: { color: '#00e676' } }}
                                 InputProps={{
                                     style: {
-                                        backgroundColor: '#1a1a1a',
+                                        backgroundColor: '#444444',
                                         borderRadius: '5px',
-                                        color: '#ff4d4d'
+                                        color: '#ffffff'
                                     }
                                 }}
                             />
                         </Grid>
-                        <Grid item xs={12}>
+                        <Grid item xs={12} sm={6}>
                             <TextField
                                 name="email"
-                                label="Your Email"
+                                label="Email"
                                 fullWidth
                                 required
                                 type="email"
                                 variant="outlined"
                                 value={formData.email}
                                 onChange={handleChange}
-                                InputLabelProps={{ style: { color: '#ff4d4d' } }}
+                                InputLabelProps={{ style: { color: '#00e676' } }}
                                 InputProps={{
                                     style: {
-                                        backgroundColor: '#1a1a1a',
+                                        backgroundColor: '#444444',
                                         borderRadius: '5px',
-                                        color: '#ff4d4d'
+                                        color: '#ffffff'
+                                    }
+                                }}
+                            />
+                        </Grid>
+                        <Grid item xs={12}>
+                            <TextField
+                                name="subject"
+                                label="Subject"
+                                fullWidth
+                                required
+                                variant="outlined"
+                                value={formData.subject}
+                                onChange={handleChange}
+                                InputLabelProps={{ style: { color: '#00e676' } }}
+                                InputProps={{
+                                    style: {
+                                        backgroundColor: '#444444',
+                                        borderRadius: '5px',
+                                        color: '#ffffff'
                                     }
                                 }}
                             />
@@ -120,7 +136,7 @@ function Contact() {
                         <Grid item xs={12}>
                             <TextField
                                 name="message"
-                                label="Your Message"
+                                label="Message"
                                 multiline
                                 rows={4}
                                 fullWidth
@@ -128,12 +144,12 @@ function Contact() {
                                 variant="outlined"
                                 value={formData.message}
                                 onChange={handleChange}
-                                InputLabelProps={{ style: { color: '#ff4d4d' } }}
+                                InputLabelProps={{ style: { color: '#00e676' } }}
                                 InputProps={{
                                     style: {
-                                        backgroundColor: '#1a1a1a',
+                                        backgroundColor: '#444444',
                                         borderRadius: '5px',
-                                        color: '#ff4d4d'
+                                        color: '#ffffff'
                                     }
                                 }}
                             />
@@ -146,12 +162,13 @@ function Contact() {
                                 style={{
                                     padding: '10px 0',
                                     fontSize: '16px',
-                                    backgroundColor: '#ff4d4d',
+                                    backgroundColor: '#00e676',
                                     color: '#ffffff',
-                                    boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.1)'
+                                    borderRadius: '5px',
+                                    boxShadow: '0px 4px 10px rgba(0, 0, 0, 0.2)'
                                 }}
                             >
-                                Send Message
+                                Submit
                             </Button>
                         </Grid>
                     </Grid>
